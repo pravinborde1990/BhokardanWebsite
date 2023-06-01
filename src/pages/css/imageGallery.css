@@ -1,0 +1,23 @@
+/* imageGallery.css */
+
+.image-gallery {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .image-container {
+    flex-basis: calc(33.33% - 20px); /* Adjust the width of each image container */
+    margin-bottom: 20px; /* Adjust the space between images */
+    
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .image-description {
+    text-align: center;
+  }
+  
