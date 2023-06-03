@@ -16,7 +16,7 @@ export default function Footer(){
             <SocialMedia/>
                 <p className="card-text mt-3 text-light"><center><h4>{credit}</h4></center></p>
                 <p className="card-text mt-3 text-light"><center><i>Contact us on mybhokrdanhelpdesk@gmail.com</i></center></p>
-                <p className="card-text mt3 text-light"><center><VisitorCount/></center></p>
+                {/*<p className="card-text mt3 text-light"><center><VisitorCount/></center></p>*/}
             </div>
             <ScrollToTop/>
         </div>
