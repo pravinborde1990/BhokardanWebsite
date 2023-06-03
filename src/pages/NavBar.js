@@ -21,7 +21,7 @@ const NavBar = ({ loadChildComponent }) => {
           <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a className="dropdown-item" href="#" onClick={() => handleLinkClick('Profile')}>Bhokardan Profile</a>
             </li>
-            <li><a className="dropdown-item" href="#" onClick={() => handleLinkClick('Map')}>Map</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => handleLinkClick('Village Info')}>Village Info</a></li>
             <li><a className="dropdown-item" href="#" onClick={() => handleLinkClick('Schools')}>Schools</a></li>
             <li><a className="dropdown-item" href="#" onClick={() => handleLinkClick('Colleges')}>Colleges</a></li>
             <li><a className="dropdown-item" href="#" onClick={() => handleLinkClick('PoliceStations')}>Police Stations</a></li>

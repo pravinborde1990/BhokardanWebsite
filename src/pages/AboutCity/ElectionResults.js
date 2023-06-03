@@ -3,7 +3,6 @@ import React from 'react';
 const ElectionResults = () => {
     const styles = {
         textAlign: 'right',
-        color: 'blue',
         fontWeight: 'bold',
         fontSize: '16px'
         // Add more CSS properties here

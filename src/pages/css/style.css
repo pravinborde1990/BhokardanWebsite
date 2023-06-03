@@ -74,3 +74,142 @@
     #scrollBtn:hover {
       background-color: #333;
     }
+    html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: '../HDimg.jpg.jpg';
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  background-color: #f5f5f5;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: purple;
+  border-radius: 50%;
+  display: inline-block;
+}
+.circle {
+  display: flex;
+  border-style: double;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: black;
+  color:white;
+  margin: 10px;
+}
+
+.countdown-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.counter {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 12px;
+}
+
+.text-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.line {
+  font-size: 40px;
+  margin: 5px 0;
+  color:#ddd;
+  font-weight: bold;
+}
+.line1 {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 48px;
+  margin: 5px 0;
+  color:floralwhite;
+  font-weight: bold;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinning-text {
+  animation: spin 8s linear infinite;
+}
+
+.spinning-text:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.spinning-text:nth-child(3) {
+  animation-delay: 4s;
+}
+
+.spinning-text:nth-child(4) {
+  animation-delay: 6s;
+}
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.flashing-text {
+  animation: flash 1s linear infinite;
+}
+.visitor-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.count {
+  font-size: 48px;
+  font-weight: bold;
+  margin-top: 10px;
+}

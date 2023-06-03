@@ -11,6 +11,7 @@ import Map from "./AboutCity/Map"
 import mainBG from "../khatkali.jpg"
 import Blank from "./AboutCity/Blank"
 import BhokardanMap from "./AboutCity/BhokardanMap"
+import Villages from "./AboutCity/Villages"
 {/*    const [accounts,setAccounts]=useState([]);
     useEffect(()=>{
         console.log("useEffect called");
@@ -59,7 +60,8 @@ import BhokardanMap from "./AboutCity/BhokardanMap"
       Colleges:Colleges,
       Offices:Offices,
       Map:Map,
-      Blank:Blank
+      Blank:Blank,
+      Villages:Villages
     };
   
     const Component = componentMap[activeComponent];
@@ -79,8 +81,10 @@ import BhokardanMap from "./AboutCity/BhokardanMap"
           return <BhokardanMap/>
         case 'PoliceStations':
           return <PoliceStations/>
-          case 'Colleges':
+        case 'Colleges':
           return <Colleges/>
+        case 'Village Info':
+              return <Villages/>
         default:
           return <Blank/>;
       }
