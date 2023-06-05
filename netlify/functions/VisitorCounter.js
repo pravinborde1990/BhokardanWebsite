@@ -1,37 +1,52 @@
-const fs = require('fs');
+const AWS = require('aws-sdk');
 
-exports.handler = async () => {
-  const fileName = 'number.txt';
-  let number = 0;
+AWS.config.update({
+  accessKeyId: 'AKIARDX2UDZU7A3HKKPA',
+  secretAccessKey: '6JYwIno7vD1B/r0SKX30/10J8nQbgO+Jtqu2oJQy',
+  region: 'ap-south-1' // e.g., 'us-east-1'
+});
+
+const s3 = new AWS.S3();
+
+const incrementFileContent = async (bucketName, key) => {
+  const params = {
+    Bucket: bucketName,
+    Key: key
+  };
 
   try {
-    // Check if the file exists
-    const fileExists = fs.existsSync(fileName);
+    const result = await s3.getObject(params).promise();
+    const fileContent = result.Body.toString('utf-8');
+    console.log('Original file content:', fileContent);
 
-    if (fileExists) {
-      // Read the number from the file
-      const fileContent = fs.readFileSync(fileName, 'utf8');
-      number = parseInt(fileContent);
-    } else {
-      // Create a new file with initial value 0
-      fs.writeFileSync(fileName, '0', 'utf8');
-    }
+    // Increment the file content by one
+    const newContent = parseInt(fileContent, 10) + 1;
 
-    // Increment the number
-    number++;
+    // Write the incremented content back to the file
+    await writeFileToS3(bucketName, key, newContent.toString());
 
-    // Update the file with the incremented number
-    fs.writeFileSync(fileName, number.toString(), 'utf8');
+    console.log('File content incremented and written to S3 successfully');
   } catch (error) {
-    console.error(error);
-    return {
-      statusCode: 500,
-      body: 'Error occurred',
-    };
+    console.error('Error processing file:', error);
+    throw error;
   }
-
-  return {
-    statusCode: 200,
-    body: number.toString(),
-  };
 };
+
+const writeFileToS3 = async (bucketName, key, content) => {
+  const params = {
+    Bucket: bucketName,
+    Key: key,
+    Body: content
+  };
+
+  try {
+    await s3.putObject(params).promise();
+    console.log('File written to S3 successfully');
+  } catch (error) {
+    console.error('Error writing file to S3:', error);
+    throw error;
+  }
+};
+
+// Usage example
+incrementFileContent('visitcounter', 'visitorcounter/number.txt');
