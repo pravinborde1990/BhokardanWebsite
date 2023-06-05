@@ -3,7 +3,7 @@ const AWS = require('aws-sdk');
 AWS.config.update({
   accessKeyId: 'AKIARDX2UDZU7A3HKKPA',
   secretAccessKey: '6JYwIno7vD1B/r0SKX30/10J8nQbgO+Jtqu2oJQy',
-  region: 'ap-south-1' // e.g., 'us-east-1'
+  region: 'YOUR_REGION' // e.g., 'us-east-1'
 });
 
 const s3 = new AWS.S3();
@@ -48,5 +48,32 @@ const writeFileToS3 = async (bucketName, key, content) => {
   }
 };
 
-// Usage example
-incrementFileContent('visitcounter', 'visitorcounter/number.txt');
+// Handler function for the Netlify function
+exports.handler = async (event) => {
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      body: 'Method Not Allowed'
+    };
+  }
+
+  const body = JSON.parse(event.body);
+  const bucketName = 'visitcounter';
+  const key = 'visitorcounter/number.txt';
+
+  try {
+    await incrementFileContent(bucketName, key);
+
+    return {
+      statusCode: 200,
+      body: 'File content incremented and written to S3 successfully'
+    };
+  } catch (error) {
+    console.error('Error executing function:', error);
+
+    return {
+      statusCode: 500,
+      body: 'Internal Server Error'
+    };
+  }
+};
